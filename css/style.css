@@ -368,19 +368,3 @@ footer .btn-link-icon:hover {
   object-fit: cover;
   width: 100%;
 }
-
-.fixed-height-gallery {
-  height: 200px; /* Adjust as needed */
-  display: flex;
-  align-items: center;
-}
-
-.fixed-height-gallery .col-md-4 {
-  height: 100%;
-}
-
-.fixed-height-gallery .img-fluid {
-  height: 100%;
-  object-fit: cover;
-  width: 100%;
-}
