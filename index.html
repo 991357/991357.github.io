@@ -477,18 +477,18 @@
           </div>
 
           <h6>프로젝트 개요</h6>
-          <p>'XR 특별 교육 과정'에서 2인 팀으로 진행한 뱀서라이크 게임입니다. 의사가 환자의 몸속에 들어가 병균을 무찌른다는 컨셉으로, 이 프로젝트를 통해 오브젝트 풀링, 오클루전 컬링, Dotween을 활용한 UI 연출 등 다양한 기술을 깊이 있게 학습했습니다.</p>
+          <p>'XR 특별 교육 과정'에서 2인 팀으로 진행한 뱀서라이크 게임입니다.</p>
 
-          <h6>주요 담당 업무</h6>
+          <h6>문제 정의 및 해결과정</h6>
+          <p>기획자 없이 2인으로 진행하는 어려움 속에서 팀장을 맡아, 복잡한 기획 대신 '퀘스트를 통한 성장'이라는 핵심 재미에 집중할 것을 제안하여 개발 방향을 구체화했습니다. 의사가 환자 몸에 들어가 병균을 무찌른다는 컨셉 아래, 다양한 기술을 학습하고 적용하며 팀원과 긴밀히 협력했습니다. 그 결과 교내 창의융합 경진대회 1위라는 성과를 거두며, 소규모 팀을 이끄는 책임감과 소통의 중요성을 배울 수 있었습니다.</p>
+
+          <h6>핵심 기능 및 기술적 도전</h6>
           <ul>
-            <li><strong>핵심 게임플레이 구현:</strong> 플레이어의 이동/대쉬 로직과 함께, 시간이 지날수록 스폰 간격을 줄여 난이도를 높이는 20개의 몬스터 스포너를 구현하여 레벨 디자인을 주도했습니다.</li>
-            <li><strong>무한 맵 시스템:</strong> TileMap을 활용하여 플레이어의 움직임에 따라 맵을 동적으로 재배치함으로써, 무한히 확장되는 맵을 구현했습니다.</li>
-            <li><strong>성능 최적화:</strong> 몬스터를 오브젝트 풀링으로 관리하고, 카메라를 벗어난 몬스터의 렌더러를 비활성화하는 간접적인 방식으로 '오클루전 컬링'을 구현하여 게임 성능을 최적화했습니다.</li>
-            <li><strong>UI/UX 설계:</strong> 게임 시작 전에 무기를 미리 조합해보는 '도감' 기능과 캐릭터 해금 진행도를 `PlayerPrefs`로 저장하여 보여주는 기능을 구현하여 사용자 편의성을 높였습니다.</li>
+            <li><strong>게임플레이 및 레벨 디자인:</strong> 플레이어의 핵심 로직과 함께, 시간이 지날수록 난이도가 높아지는 몬스터 스포너 20개를 구현하여 게임의 깊이를 더했습니다.</li>
+            <li><strong>무한 맵 시스템:</strong> TileMap을 활용해 플레이어 움직임에 따라 맵을 동적으로 재배치하여 무한히 확장되는 맵을 구현했습니다.</li>
+            <li><strong>성능 최적화:</strong> 오브젝트 풀링과 간접적인 '오클루전 컬링' 방식을 도입하여 게임 성능을 최적화했습니다.</li>
+            <li><strong>UI/UX 개선:</strong> '도감' 기능과 캐릭터 해금 진행도 표시 기능을 구현하여 사용자 편의성을 높였습니다.</li>
           </ul>
-
-          <h6>팀장으로서의 경험과 성장</h6>
-          <p>기획자 없이 2인으로 진행하는 프로젝트의 어려움 속에서, 팀장 역할을 자원하여 프로젝트의 방향성을 제시하고 의견을 조율했습니다. 복잡한 기획 대신 '퀘스트를 통한 성장'이라는 핵심 재미에 집중할 것을 제안하여 개발 방향을 구체화했습니다. 팀원과 밤을 새워가며 노력한 끝에, 교내 창의융합 경진대회에서 1위를 차지하는 성과를 거두며 프로젝트를 성공적으로 마무리했습니다. 이 경험을 통해 소규모 팀을 이끄는 책임감과 소통의 중요성을 배울 수 있었습니다.</p>
         </div>
         <div class="modal-footer">
           <a href="https://github.com/991357/XR_Cap.git" class="btn btn-link-icon"><i class="bi bi-github"></i> GitHub</a>
@@ -520,17 +520,19 @@
             </div>
           </div>
 
-          <h6>주요 기능 개발</h6>
-          <p>턴제 방치형 게임 '재활용사키우기'의 핵심 시스템 개발을 담당했습니다. 사용자 경험과 메모리 효율성을 고려하여 다음과 같은 기능들을 구현했습니다.</p>
-          <ul>
-            <li><strong>캐릭터 시스템:</strong> 'OnPointerDown', 'OnPointerUp' 이벤트를 활용해 '꾹 누르기'로 편리하게 레벨업하는 기능을 구현했습니다. 또한, 수호자 편성, 획득 시 보상을 제공하는 도감 시스템을 통해 캐릭터 수집의 재미를 더했습니다.</li>
-            <li><strong>메모리 효율적 인벤토리:</strong> 인벤토리 셀이 무한히 늘어날 가능성에 대비해, 화면에 보이는 셀만 동적으로 생성하고 재활용하는 '무한 스크롤'을 구현하여 메모리 사용량을 최적화했습니다.</li>
-            <li><strong>안정적인 상점 시스템:</strong> IAP(현금 결제) 및 인게임 재화 상점을 개발했습니다. 특히, 구매 요청 시 서버에 먼저 구매 가능 여부를 확인하는 프로토콜을 적용하여 데이터 정합성을 확보했습니다.</li>
-            <li><strong>다양한 콘텐츠:</strong> 룰렛, 주간/월간 출석 등 다양한 이벤트 시스템과 100위까지 표시되는 랭킹 보드(무한 스크롤 적용), 쿠폰 및 계정 설정 등 부가 기능을 개발하여 콘텐츠를 풍부하게 만들었습니다.</li>
-          </ul>
+          <h6>프로젝트 개요</h6>
+          <p>턴제 방치형 게임 '재활용사키우기'의 핵심 시스템 및 콘텐츠 개발을 담당했습니다.</p>
 
-          <h6>Spine 적용 및 문제 해결</h6>
-          <p>모든 캐릭터에 Spine 애니메이션을 적용했습니다. 개발 중 그래픽팀의 실수로 Spine 버전이 충돌하여 캐릭터가 동시에 표시되지 않는 문제가 발생했습니다. 이에, 캐릭터의 외형은 다르더라도 '뼈대'는 통일하여 제작하도록 가이드를 제시하여 문제를 해결했습니다. 이 경험을 통해 기획 변경이나 예상치 못한 문제에 유연하게 대처하는 능력을 기를 수 있었습니다.</p>
+          <h6>문제 정의 및 해결과정</h6>
+          <p>라이브 서비스를 위한 안정성과 효율성을 최우선으로 고려했습니다. 인벤토리 셀이 무한히 늘어날 가능성에 대비해 '무한 스크롤'을 구현하여 메모리 사용량을 최적화했습니다. 또한, 그래픽팀의 실수로 Spine 버전이 충돌했을 때, 캐릭터의 '뼈대'를 통일하는 제작 가이드를 제시하여 문제를 해결하며 협업 능력을 발휘했습니다.</p>
+
+          <h6>핵심 기능 및 기술적 도전</h6>
+          <ul>
+            <li><strong>메모리 효율적 인벤토리:</strong> 화면에 보이는 셀만 동적으로 생성하고 재활용하는 '무한 스크롤'을 구현하여 메모리 사용량을 최적화했습니다.</li>
+            <li><strong>안정적인 상점 시스템:</strong> IAP 결제 시 서버에 먼저 구매 가능 여부를 확인하는 프로토콜을 적용하여 데이터 정합성을 확보했습니다.</li>
+            <li><strong>Spine 애니메이션 문제 해결:</strong> 버전 충돌 문제를 해결하기 위해 제작 가이드를 제시하며, 기술적 문제 해결뿐만 아니라 팀 간의 소통과 조율 능력을 보여주었습니다.</li>
+            <li><strong>다양한 콘텐츠 개발:</strong> 캐릭터 시스템, 룰렛, 랭킹 보드, 쿠폰 등 다양한 콘텐츠를 개발하여 게임의 깊이를 더했습니다.</li>
+          </ul>
         </div>
         <div class="modal-footer">
           <!--<a href="#" class="btn btn-link-icon"><i class="bi bi-github"></i> GitHub</a>-->
@@ -564,19 +566,18 @@
             </div>
           </div>
 
-          <h6>게임 소개</h6>
-          <p>화면 터치로 방향을 전환하며 무한히 위로 점프하는 2D 종스크롤 점프 게임입니다. 90초라는 제한 시간 안에 최대한 높은 곳을 목표로 합니다.</p>
+          <h6>프로젝트 개요</h6>
+          <p>화면 터치로 방향을 전환하며 무한히 위로 점프하는 2D 종스크롤 점프 게임입니다.</p>
 
-          <h6>주요 개발 내용</h6>
+          <h6>문제 정의 및 해결과정</h6>
+          <p>대학 프로젝트와 실무의 가장 큰 차이인 '최적화'와 '협업'의 중요성을 배운 프로젝트입니다. 빠른 낙하 속도로 인해 발판 충돌이 무시되는 물리 버그를 가속도 직접 제어로 해결했습니다. 또한, 발판과 아이템을 함께 풀링하여 발생했던 메모리 문제를 별도 풀링 구조로 개선하며 오브젝트 풀링의 올바른 사용법을 체득했습니다.</p>
+
+          <h6>핵심 기능 및 기술적 도전</h6>
           <ul>
-            <li><strong>플레이어 물리 및 버그 수정:</strong> RigidBody를 이용해 캐릭터의 좌우 방향 전환을 구현했습니다. 빠른 낙하 속도로 인해 발판과의 충돌이 무시되는 버그를, 가속도를 직접 제어하는 방식으로 해결하여 안정성을 높였습니다.</li>
-            <li><strong>오브젝트 풀링 최적화:</strong> 초기에 발판과 아이템을 함께 풀링하여 발생했던 메모리 문제를, 아이템과 이펙트를 별도로 풀링하는 구조로 개선하여 메모리 사용량을 크게 줄였습니다. 이 경험을 통해 오브젝트 풀링의 올바른 사용법을 깊이 이해하게 되었습니다.</li>
-            <li><strong>다양한 레벨 요소:</strong> 일반, 약화, 슈퍼, 울트라 등 4종류의 발판을 구현하여 게임의 재미를 더했으며, 부스터 아이템 사용 시 화면 진동 효과를 추가하여 타격감을 높였습니다.</li>
-            <li><strong>UX 편의성 개선:</strong> 전화 수신 등 앱의 포커스를 잃는 상황에 대응하기 위한 자동 일시정지 기능을 추가하고, Dotween을 활용하여 아이템 획득 시 자연스러운 UI 연출을 구현했습니다.</li>
+            <li><strong>물리 버그 수정:</strong> RigidBody의 충돌 무시 버그를 가속도 직접 제어를 통해 해결하여 안정성을 확보했습니다.</li>
+            <li><strong>메모리 최적화:</strong> 오브젝트 풀링 구조를 개선하여 메모리 사용량을 크게 줄이고, 다양한 모바일 환경에 대응하는 최적화의 중요성을 학습했습니다.</li>
+            <li><strong>레벨 및 UX 디자인:</strong> 4종류의 발판과 부스터 아이템, 화면 진동 효과로 재미를 더하고, 앱 포커스 상실 시 자동 일시정지 기능을 추가하여 사용자 편의성을 개선했습니다.</li>
           </ul>
-
-          <h6>프로젝트를 통한 성장</h6>
-          <p>대학 프로젝트와 실무의 가장 큰 차이는 '최적화'와 '협업'에 있음을 배웠습니다. 단순히 기능을 구현하는 것을 넘어, 다양한 모바일 환경에서의 해상도 대응, 메모리 관리의 중요성을 깨달았습니다. 또한, 기획/아트팀과의 지속적인 소통과 빠른 문제 공유가 프로젝트의 완성도를 얼마나 높이는지 직접 경험하며 개발자로서 한 단계 성장할 수 있었습니다.</p>
         </div>
         <div class="modal-footer">
           <!--<a href="#" class="btn btn-link-icon"><i class="bi bi-github"></i> GitHub</a>-->
@@ -633,16 +634,17 @@
           </div>
 
           <h6>프로젝트 개요</h6>
-          <p>충청권 게임 인디유 공모전을 목표로 한 프로젝트로, 개발 중후반 단계에 팀원으로 합류했습니다. Unreal Engine 및 BluePrint 경험이 적어, 사운드 및 UI 구성 등 비교적 명확한 업무를 맡아 수행하며 프로젝트에 기여하고 새로운 기술을 빠르게 습득하는 데 집중했습니다.</p>
+          <p>충청권 게임 공모전을 목표로, 개발 중후반에 합류하여 Unreal Engine과 BluePrint를 단기간에 학습하며 기여한 로그라이크 게임입니다.</p>
 
-          <h6>주요 담당 업무</h6>
+          <h6>문제 정의 및 해결과정</h6>
+          <p>C++ 기반의 텍스트 코딩에 익숙했지만, 프로젝트는 노드 기반의 BluePrint를 사용하고 있었습니다. 새로운 개발 방식에 빠르게 적응하기 위해, 사운드 시스템과 UI 흐름 구성 등 비교적 명확한 업무를 맡아 BluePrint의 작동 방식을 익히고 프로젝트에 기여하는 전략을 선택했습니다.</p>
+
+          <h6>핵심 기능 및 기술적 도전</h6>
           <ul>
-            <li><strong>사운드 시스템 구현:</strong> 게임의 BGM과 SFX(효과음)를 추가하는 역할을 담당했습니다. <code>BeginPlay</code> 이벤트로 배경음을 재생하고, <code>OnClicked</code> 이벤트로 UI 클릭 효과음을 구현했습니다. 특히, 'Ambient Sound' 액터의 거리에 따라 볼륨이 조절되는 기능을 학습하여 적용했으며, 애니메이션 노티파이를 활용해 걷는 소리를 구현했습니다.</li>
-            <li><strong>UI 및 씬 흐름 구성:</strong> 로비, 대기실, 스테이지 선택, 인게임으로 이어지는 전체적인 씬의 흐름을 구성하고, 각 씬에 필요한 UI를 배치했습니다. <code>OnClicked</code> 이벤트를 통해 화면 전환 기능을 구현하고, 카메라 워크를 활용한 연출을 추가했습니다.</li>
+            <li><strong>사운드 시스템 구현:</strong> `BeginPlay`, `OnClicked` 등 이벤트 기반으로 BGM과 SFX를 구현하고, 'Ambient Sound' 액터와 애니메이션 노티파이를 활용해 환경음과 발소리 등을 구현하며 BluePrint 활용 능력을 익혔습니다.</li>
+            <li><strong>UI 및 씬 흐름 구성:</strong> 로비, 대기실, 스테이지 선택, 인게임으로 이어지는 전체적인 씬의 흐름과 UI를 BluePrint로 구성했습니다.</li>
+            <li><strong>빠른 기술 습득:</strong> 제한된 시간 안에 처음 접하는 Unreal Engine과 BluePrint 개발 방식을 익히고 실무에 적용하며, 새로운 기술에 대한 빠른 학습 및 적응 능력을 증명했습니다.</li>
           </ul>
-
-          <h6>새로운 기술에 대한 도전</h6>
-          <p>이 프로젝트를 통해 처음 접하는 Unreal Engine과 BluePrint라는 새로운 기술에 단기간에 적응해야 했습니다. 기존의 텍스트 코딩과는 다른 노드 기반의 BluePrint 개발 방식은 새로운 도전이었지만, 이를 통해 게임 개발에 대한 시야를 넓힐 수 있었습니다. 비록 제한된 역할이었지만, 새로운 개발 환경에 능동적으로 적응하는 능력을 기를 수 있었던 소중한 경험입니다.</p>
         </div>
         <div class="modal-footer">
           <!--<a href="#" class="btn btn-link-icon"><i class="bi bi-github"></i> GitHub</a>-->
@@ -666,21 +668,25 @@
               <button type="button" data-bs-target="#carouselSlender" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
               <button type="button" data-bs-target="#carouselSlender" data-bs-slide-to="1" aria-label="Slide 2"></button>
               <button type="button" data-bs-target="#carouselSlender" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              <button type="button" data-bs-target="#carouselSlender" data-bs-slide-to="3" aria-label="Slide 4"></button>
             </div>
             <div class="carousel-inner rounded">
               <div class="carousel-item active">
-                <img src="images/slender/slender_1.png?text=First+slide" class="d-block w-100" alt="Slender Screenshot 1">
+                <img src="images/slender/slender_1.png" class="d-block w-100" alt="Slender Screenshot 1">
               </div>
               <div class="carousel-item">
-                <img src="images/slender/slender_2.png?text=Second+slide" class="d-block w-100" alt="Slender Screenshot 2">
+                <img src="images/slender/slender_2.png" class="d-block w-100" alt="Slender Screenshot 2">
               </div>
               <div class="carousel-item">
-                <img src="images/slender/slender_3.png?text=Third+slide" class="d-block w-100" alt="Slender Screenshot 3">
+                <img src="images/slender/slender_3.png" class="d-block w-100" alt="Slender Screenshot 3">
+              </div>
+              <div class="carousel-item">
+                <img src="images/slender/slender_4.png" class="d-block w-100" alt="Slender Screenshot 4">
               </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselSlender" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
+              <span class="visually-hidden">Next</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#carouselSlender" data-bs-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
@@ -689,17 +695,18 @@
           </div>
 
           <h6>프로젝트 개요</h6>
-          <p>'비트 고급 교육 과정'에서 6인 팀으로 진행한 저의 첫 Unity 프로젝트입니다. 게임 엔진에 대한 지식 없이 시작하여, 팀원들과 함께 독학으로 Unity와 Photon PUN2를 학습하며 3D 공포 멀티 탈출 게임을 완성했습니다.</p>
+          <p>Unity 엔진 지식 없이 6인 팀으로 시작하여, 3D 공포 멀티 탈출 게임을 완성한 첫 프로젝트입니다.</p>
 
-          <h6>주요 담당 업무</h6>
+          <h6>문제 정의 및 해결과정</h6>
+          <p>게임 엔진 경험이 전무한 상태에서 멀티플레이 게임을 구현해야 했습니다. 초기에는 C# 소켓과 UDP 통신으로 직접 서버를 구축했으나, 잦은 동기화 오류와 과도한 트래픽으로 인한 성능 저하(컴퓨터 팬 소음 급증) 문제에 직면했습니다. 문제 해결을 위해 Photon PUN2 기술을 도입하기로 결정하고, 독학으로 서버 접속부터 플레이어 동기화 로직까지 다시 구현했습니다. 특히, Master Client의 입력만 동기화되는 문제를 RPC(Remote Procedure Call)를 적용하여 해결하며 멀티플레이의 핵심 원리를 터득했습니다. 이 과정에서 3차원 벡터, 이동 방향 및 각도 계산과 같은 기초적인 게임 수학부터 네트워크 동기화까지 깊이 있게 학습할 수 있었습니다.</p>
+
+          <h6>핵심 기능 및 기술적 도전</h6>
           <ul>
-            <li><strong>멀티플레이 시스템 구현 (Photon PUN2):</strong> MonoBehaviourPunCallBacks를 상속받아 서버 접속, 닉네임 설정, 방 생성 및 참여 기능을 구현했습니다. 특히, Master Client의 입력이 모든 플레이어에게 적용되는 동기화 문제를 RPC를 학습하고 적용하여 해결함으로써, 멀티플레이어 게임의 핵심 원리를 이해했습니다.</li>
+            <li><strong>멀티플레이 시스템 전환:</strong> 직접 구현한 UDP 소켓 서버의 한계를 경험하고, 안정성과 개발 효율을 위해 Photon PUN2로 전환하여 성공적으로 멀티플레이 환경을 구축했습니다.</li>
             <li><strong>게임 콘텐츠 및 레벨 디자인:</strong> 공포 게임 컨셉에 맞는 3단계의 스테이지와 키패드, 카드 등 다양한 퍼즐을 직접 설계하고 제작했습니다.</li>
             <li><strong>로비 및 UI/UX:</strong> 플레이어들이 방을 만들고 참여할 수 있는 로비 화면과 닉네임 설정 등 전반적인 UI/UX를 제작했습니다.</li>
+            <li><strong>자기주도 학습 및 팀워크:</strong> 팀의 리더로서 회의를 주도하고, 모든 개발 과정을 온라인 자료를 통해 독학으로 진행하며 새로운 기술을 스스로 학습하고 적용하는 능력을 길렀습니다.</li>
           </ul>
-
-          <h6>팀워크 및 자기주도 학습</h6>
-          <p>6인 규모의 팀 프로젝트에서 의견 충돌이 있을 때마다 회의를 주도하여 의견을 조율하고 합리적인 해결책을 제시하는 역할을 맡았습니다. 또한, Youtube와 Google 등 온라인 자료에 의존하여 모든 개발 과정을 독학으로 진행하며, 새로운 기술을 스스로 학습하고 적용하는 능력을 길렀습니다. 이 프로젝트는 저에게 게임 엔진에 대한 이해와 팀워크의 중요성을 동시에 가르쳐준 소중한 첫걸음입니다.</p>
         </div>
         <div class="modal-footer">
           <a href="https://github.com/991357/Run-Or-Escape.git" class="btn btn-link-icon"><i class="bi bi-github"></i> GitHub</a>
