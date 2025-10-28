@@ -1,0 +1,123 @@
+/* PDF-friendly stylesheet - Redesigned v6.0 (Constrained Single-Column) */
+body {
+    font-family: 'Malgun Gothic', sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px; /* A slightly more constrained width for better single-column readability */
+    margin: 30px auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+header h1 {
+    margin: 0 0 10px 0;
+    font-size: 3em;
+    font-weight: 900;
+    color: #000;
+}
+
+header h2 {
+    margin: 0 0 15px 0;
+    font-size: 1.6em;
+    font-weight: normal;
+    color: #495057;
+}
+
+.contact p {
+    margin: 4px 0;
+    font-size: 1.1em;
+    color: #6c757d;
+}
+
+.project {
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 30px;
+    page-break-inside: avoid;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+}
+
+.project h3 {
+    font-size: 2em;
+    font-weight: 700;
+    color: #000;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-top: 0;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.project-image {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.project-image img {
+    max-width: 70%; /* Constrained image width */
+    height: auto;
+    border-radius: 5px;
+    border: 1px solid #dee2e6;
+    display: block;
+    margin: 0 auto; /* Center the image */
+}
+
+.project-description h4 {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #343a40;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.project-description p,
+.project-description ul {
+    margin: 0 0 15px 0;
+    font-size: 1em;
+}
+
+.project-description ul {
+    padding-left: 20px;
+}
+
+.project-description li {
+    margin-bottom: 5px;
+}
+
+/* Print-specific styles */
+@media print {
+    body, .container {
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+        background-color: #fff;
+    }
+    .container {
+        padding: 10mm;
+    }
+    .project {
+        border: 1px solid #ccc;
+        box-shadow: none;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    .project h3 {
+        border-color: #eee;
+    }
+    .project-image img {
+        border-color: #ccc;
+    }
+}
