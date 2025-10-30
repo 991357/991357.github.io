@@ -480,3 +480,21 @@ footer .btn-link-icon:hover {
     opacity: 0;
   }
 }
+
+/* --- Background Game --- */
+#background-game {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  /* The canvas background will be drawn in JS, but a fallback is good. */
+  background-color: var(--bg-color); 
+}
+
+@media (max-width: 768px) {
+  #background-game {
+    display: none;
+  }
+}
