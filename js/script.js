@@ -38,4 +38,39 @@ document.addEventListener('DOMContentLoaded', function () {
   // Initial check on load
   handleScrollSpy();
 
+  // --- Typing Effect ---
+  const typingText = document.getElementById('typing-text');
+  const text = "도전, 개발, 그리고 창의성을 상징하는 개발자";
+  let index = 0;
+  let isDeleting = false;
+
+  function type() {
+    const fullText = text;
+    let currentText = '';
+
+    if (isDeleting) {
+      currentText = fullText.substring(0, index - 1);
+      index--;
+    } else {
+      currentText = fullText.substring(0, index + 1);
+      index++;
+    }
+
+    if(typingText) {
+      typingText.textContent = currentText;
+    }
+
+    let typeSpeed = isDeleting ? 100 : 200;
+
+    if (!isDeleting && index === fullText.length) {
+      typeSpeed = 2000;
+      isDeleting = true;
+    } else if (isDeleting && index === 0) {
+      isDeleting = false;
+    }
+    
+    setTimeout(type, typeSpeed);
+  }
+
+  type();
 });

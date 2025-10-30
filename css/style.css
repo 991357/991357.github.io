@@ -70,12 +70,107 @@ body {
 #home .name-title {
   font-family: 'Roboto Mono', monospace;
   color: var(--text-color);
-  text-shadow: 0 0 15px rgba(187, 154, 247, 0.3);
 }
 
 #home .lead {
   color: var(--text-secondary);
   font-size: 1.2rem;
+}
+
+.intro-text {
+  display: inline-block;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.intro-fade-in {
+  animation: fadeIn 1s 0.5s ease-in forwards;
+}
+
+.intro-slide-in {
+  animation: slideIn 1s 1.5s ease-out forwards;
+}
+
+.intro-zoom-in {
+  animation: zoomIn 0.8s 2.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.intro-fade-in-late {
+    animation: fadeIn 1s 3.5s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; visibility: visible; }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    visibility: visible;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    visibility: visible;
+  }
+}
+
+/* --- Neon Effect --- */
+.neon-effect {
+  color: #fff;
+  animation: double-flicker 4s infinite;
+}
+
+@keyframes double-flicker {
+    0%, 100% {
+        opacity: 1;
+        text-shadow:
+            0 0 7px rgba(187, 154, 247, 0.5),
+            0 0 10px rgba(187, 154, 247, 0.4),
+            0 0 21px rgba(187, 154, 247, 0.3);
+    }
+    70% {
+        opacity: 1;
+        text-shadow:
+            0 0 7px rgba(187, 154, 247, 0.5),
+            0 0 10px rgba(187, 154, 247, 0.4),
+            0 0 21px rgba(187, 154, 247, 0.3);
+    }
+    71% {
+        opacity: 0.5;
+        text-shadow: none;
+    }
+    72% {
+        opacity: 1;
+        text-shadow:
+            0 0 7px rgba(187, 154, 247, 0.5),
+            0 0 10px rgba(187, 154, 247, 0.4),
+            0 0 21px rgba(187, 154, 247, 0.3);
+    }
+    73% {
+        opacity: 0.5;
+        text-shadow: none;
+    }
+    74% {
+        opacity: 1;
+        text-shadow:
+            0 0 7px rgba(187, 154, 247, 0.5),
+            0 0 10px rgba(187, 154, 247, 0.4),
+            0 0 21px rgba(187, 154, 247, 0.3);
+    }
 }
 
 .hub-nav {
@@ -367,4 +462,21 @@ footer .btn-link-icon:hover {
   height: 100%;
   object-fit: cover;
   width: 100%;
+}
+
+#typing-text::after {
+  content: '|';
+  display: inline-block;
+  animation: blink 1s infinite;
+  color: var(--text-secondary);
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
