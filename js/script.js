@@ -1,5 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+  const gameToggle = document.getElementById('game-toggle');
+  const playText = document.getElementById('play-text');
+  let isGameEnabled = false;
+
   // --- Smooth Scroll for all anchor links ---
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -35,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   window.addEventListener('scroll', handleScrollSpy);
-  // Initial check on load
   handleScrollSpy();
 
   // --- Typing Effect ---
@@ -76,7 +79,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // --- Background Shooting Game ---
   const canvas = document.getElementById('background-game');
-  // MODIFICATION: Check for canvas AND screen width
   if (canvas && window.innerWidth > 768) {
     const ctx = canvas.getContext('2d');
     let width = canvas.width = window.innerWidth;
@@ -116,6 +118,40 @@ document.addEventListener('DOMContentLoaded', function () {
     let targetSpawnCounter = 0;
     let shootCooldownCounter = 0;
     let animationFrameId = null;
+
+    function startGame() {
+        if (!animationFrameId && isGameEnabled) {
+            updateSafeZone();
+            animate();
+        }
+    }
+
+    function stopGame() {
+        if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
+            ctx.clearRect(0, 0, width, height);
+            // Clear all game elements
+            bullets = [];
+            targets = [];
+            particles = [];
+        }
+    }
+
+    if (gameToggle && playText) {
+        gameToggle.addEventListener('change', function() {
+            isGameEnabled = this.checked;
+            playText.classList.toggle('hidden', this.checked);
+
+            if (isGameEnabled) {
+                if (window.scrollY === 0) {
+                    startGame();
+                }
+            } else {
+                stopGame();
+            }
+        });
+    }
 
     window.addEventListener('resize', () => {
       width = canvas.width = window.innerWidth;
@@ -278,21 +314,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
-    function startGame() {
-        if (!animationFrameId) {
-            updateSafeZone();
-            animate();
-        }
-    }
-
-    function stopGame() {
-        if (animationFrameId) {
-            cancelAnimationFrame(animationFrameId);
-            animationFrameId = null;
-            ctx.clearRect(0, 0, width, height);
-        }
-    }
-
     window.addEventListener('scroll', () => {
         if (window.scrollY > 0) {
             stopGame();
@@ -305,7 +326,7 @@ document.addEventListener('DOMContentLoaded', function () {
     gsapScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js';
     gsapScript.onload = () => {
         if (window.scrollY === 0) {
-            startGame();
+            // Don't start game automatically, wait for toggle
         }
     };
     document.body.appendChild(gsapScript);
