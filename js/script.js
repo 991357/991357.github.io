@@ -118,11 +118,13 @@ document.addEventListener('DOMContentLoaded', function () {
     let targetSpawnCounter = 0;
     let shootCooldownCounter = 0;
     let animationFrameId = null;
+    let lastTime = 0;
 
     function startGame() {
         if (!animationFrameId && isGameEnabled) {
             updateSafeZone();
-            animate();
+            lastTime = 0;
+            animate(0);
         }
     }
 
@@ -184,9 +186,9 @@ document.addEventListener('DOMContentLoaded', function () {
         ctx.restore();
       }
 
-      update() {
-        this.x += this.velocity.x;
-        this.y += this.velocity.y;
+      update(deltaTime) {
+        this.x += this.velocity.x * deltaTime;
+        this.y += this.velocity.y * deltaTime;
         this.alpha -= 0.02;
         this.draw();
       }
@@ -206,20 +208,23 @@ document.addEventListener('DOMContentLoaded', function () {
         
         const angle = Math.atan2(height / 2 - y, width / 2 - x);
         const velocity = {
-            x: Math.cos(angle),
-            y: Math.sin(angle)
+            x: Math.cos(angle) * 120,
+            y: Math.sin(angle) * 120
         };
 
         targets.push({ x, y, radius, color: '#c0caf5', velocity });
     }
 
-    function animate() {
+    function animate(timestamp) {
       animationFrameId = requestAnimationFrame(animate);
+      const deltaTime = (timestamp - lastTime) / 1000 || 0;
+      lastTime = timestamp;
       
       ctx.clearRect(0, 0, width, height);
 
-      player.x += (mouse.x - player.x) * 0.05;
-      player.y += (mouse.y - player.y) * 0.05;
+      const lerpFactor = 1 - Math.pow(0.90, deltaTime * 60);
+      player.x += (mouse.x - player.x) * lerpFactor;
+      player.y += (mouse.y - player.y) * lerpFactor;
 
       ctx.save();
       ctx.translate(player.x, player.y);
@@ -236,17 +241,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (shootCooldownCounter > 15) {
         const bulletAngle = Math.atan2(mouse.y - player.y, mouse.x - player.x);
-        const velocity = { x: Math.cos(bulletAngle) * 5, y: Math.sin(bulletAngle) * 5 };
+        const velocity = { x: Math.cos(bulletAngle) * 600, y: Math.sin(bulletAngle) * 600 };
         bullets.push({ x: player.x, y: player.y, radius: 4, color: '#bb9af7', velocity: velocity });
         shootCooldownCounter = 0;
       }
       shootCooldownCounter++;
 
-      particles.forEach((p, i) => { p.alpha <= 0 ? particles.splice(i, 1) : p.update(); });
+      particles.forEach((p, i) => { p.alpha <= 0 ? particles.splice(i, 1) : p.update(deltaTime); });
 
       bullets.forEach((b, i) => {
-        b.x += b.velocity.x;
-        b.y += b.velocity.y;
+        b.x += b.velocity.x * deltaTime;
+        b.y += b.velocity.y * deltaTime;
         ctx.beginPath();
         ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
         ctx.fillStyle = b.color;
@@ -255,11 +260,11 @@ document.addEventListener('DOMContentLoaded', function () {
       });
 
       targets.forEach((target, tIndex) => {
-        const prevX = target.x - target.velocity.x;
-        const prevY = target.y - target.velocity.y;
+        const prevX = target.x - target.velocity.x * deltaTime;
+        const prevY = target.y - target.velocity.y * deltaTime;
 
-        target.x += target.velocity.x;
-        target.y += target.velocity.y;
+        target.x += target.velocity.x * deltaTime;
+        target.y += target.velocity.y * deltaTime;
 
         const targetRight = target.x + target.radius;
         const targetLeft = target.x - target.radius;
@@ -295,7 +300,7 @@ document.addEventListener('DOMContentLoaded', function () {
           const dist = Math.hypot(bullet.x - target.x, bullet.y - target.y);
           if (dist - target.radius - bullet.radius < 1) {
             for (let i = 0; i < target.radius * 0.5; i++) {
-              particles.push(new Particle(bullet.x, bullet.y, Math.random() * 2, target.color, { x: (Math.random() - 0.5) * 6, y: (Math.random() - 0.5) * 6 }));
+              particles.push(new Particle(bullet.x, bullet.y, Math.random() * 2, target.color, { x: (Math.random() - 0.5) * 720, y: (Math.random() - 0.5) * 720 }));
             }
             if (target.radius - 10 > 10) {
                  gsap.to(target, { radius: target.radius - 10 });
