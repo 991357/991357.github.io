@@ -579,3 +579,30 @@ input:checked + .slider:before {
 #play-text.hidden {
     display: none;
 }
+
+#speed-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Increased gap */
+    margin-right: 10px; /* Added margin to separate from toggle */
+}
+
+#speed-controls button {
+    background: var(--border-color);
+    color: var(--text-secondary);
+    border: none;
+    padding: 2px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#speed-controls button:hover,
+#speed-controls button.active {
+    background-color: var(--accent1);
+    color: white;
+}
+
+.hidden {
+    display: none !important;
+}

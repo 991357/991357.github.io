@@ -2,6 +2,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const gameToggle = document.getElementById('game-toggle');
   const playText = document.getElementById('play-text');
+  const speedControls = document.getElementById('speed-controls');
+  const speedButtons = {
+    x1: document.getElementById('speed-x1'),
+    x2: document.getElementById('speed-x2'),
+    x4: document.getElementById('speed-x4'),
+    x6: document.getElementById('speed-x6'),
+  };
   let isGameEnabled = false;
 
   // --- Smooth Scroll for all anchor links ---
@@ -119,6 +126,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let shootCooldownCounter = 0;
     let animationFrameId = null;
     let lastTime = 0;
+    let gameSpeed = 1; // Game speed multiplier
 
     function startGame() {
         if (!animationFrameId && isGameEnabled) {
@@ -144,16 +152,39 @@ document.addEventListener('DOMContentLoaded', function () {
         gameToggle.addEventListener('change', function() {
             isGameEnabled = this.checked;
             playText.classList.toggle('hidden', this.checked);
+            speedControls.classList.toggle('hidden', !this.checked);
 
             if (isGameEnabled) {
                 if (window.scrollY === 0) {
                     startGame();
                 }
+                // Set x1 as default active button
+                if(speedButtons.x1) {
+                    Object.values(speedButtons).forEach(btn => btn.classList.remove('active'));
+                    speedButtons.x1.classList.add('active');
+                    gameSpeed = 1;
+                }
             } else {
                 stopGame();
+                 // Clear active state from all speed buttons
+                Object.values(speedButtons).forEach(btn => btn.classList.remove('active'));
             }
         });
     }
+
+    Object.entries(speedButtons).forEach(([key, button]) => {
+        if (button) {
+            button.addEventListener('click', function() {
+                const speed = parseInt(key.slice(1));
+                gameSpeed = speed;
+
+                // Remove active class from all speed buttons
+                Object.values(speedButtons).forEach(btn => btn.classList.remove('active'));
+                // Add active class to the clicked button
+                this.classList.add('active');
+            });
+        }
+    });
 
     window.addEventListener('resize', () => {
       width = canvas.width = window.innerWidth;
@@ -189,7 +220,7 @@ document.addEventListener('DOMContentLoaded', function () {
       update(deltaTime) {
         this.x += this.velocity.x * deltaTime;
         this.y += this.velocity.y * deltaTime;
-        this.alpha -= 0.02;
+        this.alpha -= 0.02 * (deltaTime * 60); // Adjust alpha fade based on frame rate
         this.draw();
       }
     }
@@ -217,9 +248,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function animate(timestamp) {
       animationFrameId = requestAnimationFrame(animate);
-      const deltaTime = (timestamp - lastTime) / 1000 || 0;
+      let deltaTime = (timestamp - lastTime) / 1000 || 0;
       lastTime = timestamp;
       
+      // Apply game speed
+      deltaTime *= gameSpeed;
+
       ctx.clearRect(0, 0, width, height);
 
       const lerpFactor = 1 - Math.pow(0.90, deltaTime * 60);
@@ -245,7 +279,7 @@ document.addEventListener('DOMContentLoaded', function () {
         bullets.push({ x: player.x, y: player.y, radius: 4, color: '#bb9af7', velocity: velocity });
         shootCooldownCounter = 0;
       }
-      shootCooldownCounter++;
+      shootCooldownCounter += gameSpeed;
 
       particles.forEach((p, i) => { p.alpha <= 0 ? particles.splice(i, 1) : p.update(deltaTime); });
 
@@ -303,7 +337,7 @@ document.addEventListener('DOMContentLoaded', function () {
               particles.push(new Particle(bullet.x, bullet.y, Math.random() * 2, target.color, { x: (Math.random() - 0.5) * 720, y: (Math.random() - 0.5) * 720 }));
             }
             if (target.radius - 10 > 10) {
-                 gsap.to(target, { radius: target.radius - 10 });
+                 gsap.to(target, { radius: target.radius - 10, duration: 0.1 / gameSpeed });
                  setTimeout(() => { bullets.splice(bIndex, 1); }, 0);
             } else {
                 setTimeout(() => { targets.splice(tIndex, 1); bullets.splice(bIndex, 1); }, 0);
@@ -312,7 +346,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       });
 
-      targetSpawnCounter++;
+      targetSpawnCounter += gameSpeed;
       if (targetSpawnCounter > 100) {
         spawnTarget();
         targetSpawnCounter = 0;
