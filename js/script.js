@@ -6,8 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const speedButtons = {
     x1: document.getElementById('speed-x1'),
     x2: document.getElementById('speed-x2'),
-    x4: document.getElementById('speed-x4'),
-    x6: document.getElementById('speed-x6'),
   };
   let isGameEnabled = false;
 
