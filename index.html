@@ -15,6 +15,8 @@
 
 <body data-bs-spy="scroll" data-bs-target="#side-nav" data-bs-offset="100">
 
+  <canvas id="background-game"></canvas>
+
   <!-- Side Navigation -->
   <nav id="side-nav" class="nav flex-column d-none d-lg-block">
     <a class="nav-link" href="#home"></a>
@@ -29,6 +31,17 @@
 
   <!-- Home Section (Hub) -->
   <section id="home" class="d-flex flex-column justify-content-center align-items-center text-center">
+    <div class="game-toggle-container">
+      <span id="play-text">Play</span>
+      <label class="switch">
+        <input type="checkbox" id="game-toggle">
+        <span class="slider round"></span>
+      </label>
+      <div id="speed-controls" class="speed-controls hidden">
+        <button id="speed-x1" class="speed-button">x1</button>
+        <button id="speed-x2" class="speed-button">x2</button>
+      </div>
+    </div>
     <div class="container">
       <h1 class="name-title display-3 fw-bold">이현빈</h1>
       <p class="lead my-4">도전, 개발 그리고 창의성을 상징하는 사람</p>

@@ -65,6 +65,7 @@ body {
 /* --- Home Section (Hub) --- */
 #home {
   height: 100vh;
+  position: relative; /* Ensure positioning context for children */
 }
 
 #home .name-title {
@@ -581,10 +582,16 @@ input:checked + .slider:before {
 }
 
 #speed-controls {
+    position: absolute;
+    top: 30px; /* Position it below the toggle */
+    right: 0;
     display: flex;
     align-items: center;
-    gap: 8px; /* Increased gap */
-    margin-right: 10px; /* Added margin to separate from toggle */
+    gap: 8px;
+    background-color: var(--bg-section); /* Add a background to prevent text overlap */
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 102; /* Ensure it's on top */
 }
 
 #speed-controls button {
