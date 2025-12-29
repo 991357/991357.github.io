@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // --- Typing Effect ---
   const typingText = document.getElementById('typing-text');
-  const text = "도전, 개발 그리고 창의성을 상징하는 개발자";
+  const text = "도전, 개발 그리고 창의성을 상징하는 사람";
   let index = 0;
   let isDeleting = false;
 
